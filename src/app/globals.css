@@ -78,3 +78,25 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+.contribution-graph {
+  overflow-x: auto;
+}
+
+.contribution-graph::-webkit-scrollbar {
+  height: 8px;
+}
+
+.contribution-graph::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.contribution-graph::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+.contribution-graph::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
