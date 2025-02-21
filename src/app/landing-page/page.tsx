@@ -4,8 +4,9 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import Navbar from '@/components/NavBar'
+import Footer from '@/components/Footer'
 
-export default function Home() {
+export default function LandingPage() {
   const [hoveredFeature, setHoveredFeature] = useState<string | null>(null)
 
   const features = [
@@ -13,16 +14,16 @@ export default function Home() {
       id: 'dashboard',
       title: 'Smart Dashboard',
       description: 'Personalized study tracking and analytics',
-      icon: '📊',
-      path: '/dashboard',
+      icon: '��',
+      path: '#',
       color: 'bg-blue-500'
     },
     {
       id: 'study',
       title: 'Study Material',
       description: 'AI-curated learning resources',
-      icon: '📚',
-      path: '/study',
+      icon: '��',
+      path: '#',
       color: 'bg-green-500'
     },
     {
@@ -30,7 +31,7 @@ export default function Home() {
       title: 'Practice Tests',
       description: 'Exam-specific mock tests',
       icon: '✍️',
-      path: '/practice',
+      path: '#',
       color: 'bg-purple-500'
     },
     {
@@ -38,10 +39,14 @@ export default function Home() {
       title: 'Community',
       description: 'Connect with fellow aspirants',
       icon: '👥',
-      path: '/community',
+      path: '#',
       color: 'bg-orange-500'
     }
   ]
+
+  const handleGetStarted = () => {
+    window.location.href = '/dashboard'
+  }
 
   return (
     <div className="min-h-screen bg-background">
@@ -65,20 +70,22 @@ export default function Home() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <Link href="/dashboard">
-                <button className="bg-blue-600 text-white px-8 py-3 rounded-lg text-lg font-medium hover:bg-blue-700 transition-colors">
-                  Get Started
-                </button>
-              </Link>
+              <button 
+                onClick={handleGetStarted}
+                className="bg-blue-600 text-white px-8 py-3 rounded-lg text-lg font-medium hover:bg-blue-700 transition-colors"
+              >
+                Get Started
+              </button>
             </motion.div>
           </motion.div>
         </div>
       </section>
 
+      {/* Features Section */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {features.map((feature) => (
-            <Link href={feature.path} key={feature.id}>
+            <div key={feature.id}>
               <motion.div
                 className={`relative rounded-xl p-6 cursor-pointer ${
                   hoveredFeature === feature.id ? 'shadow-lg' : 'shadow-sm'
@@ -102,7 +109,7 @@ export default function Home() {
                   →
                 </motion.div>
               </motion.div>
-            </Link>
+            </div>
           ))}
         </div>
       </section>
@@ -158,15 +165,15 @@ export default function Home() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <Link href="/register">
-                <button className="bg-white text-blue-600 px-8 py-3 rounded-lg text-lg font-medium hover:bg-blue-50 transition-colors">
-                  Sign Up Now
-                </button>
-              </Link>
+              <button className="bg-white text-blue-600 px-8 py-3 rounded-lg text-lg font-medium hover:bg-blue-50 transition-colors">
+                Sign Up Now
+              </button>
             </motion.div>
           </motion.div>
         </div>
       </section>
+
+      <Footer />
     </div>
   )
 }
