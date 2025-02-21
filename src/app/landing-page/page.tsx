@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import Link from 'next/link'
 import { motion } from 'framer-motion'
 import Navbar from '@/components/NavBar'
 import Footer from '@/components/Footer'
@@ -14,7 +13,7 @@ export default function LandingPage() {
       id: 'dashboard',
       title: 'Smart Dashboard',
       description: 'Personalized study tracking and analytics',
-      icon: '��',
+      icon: '🏠',
       path: '#',
       color: 'bg-blue-500'
     },
@@ -22,7 +21,7 @@ export default function LandingPage() {
       id: 'study',
       title: 'Study Material',
       description: 'AI-curated learning resources',
-      icon: '��',
+      icon: '📚',
       path: '#',
       color: 'bg-green-500'
     },

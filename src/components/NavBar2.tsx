@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import { UserButton } from '@clerk/nextjs'
 
 export default function NavBar2() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
@@ -95,6 +96,7 @@ export default function NavBar2() {
                 {item.name}
               </Link>
             ))}
+            <UserButton />
           </div>
         </div>
       </div>
