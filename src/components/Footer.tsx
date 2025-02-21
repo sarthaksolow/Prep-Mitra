@@ -50,37 +50,42 @@ export default function Footer() {
   }
 
   return (
-    <footer className="bg-gray-900 text-gray-300">
+    <footer className="bg-gray-800 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-          {Object.values(footerSections).map((section) => (
-            <div key={section.title}>
-              <h3 className="text-white text-lg font-semibold mb-4">{section.title}</h3>
-              <ul className="space-y-2">
-                {section.links.map((link) => (
-                  <li key={link.name}>
-                    <Link 
-                      href={link.href}
-                      className="hover:text-white transition-colors"
-                    >
-                      {link.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-        
-        <div className="border-t border-gray-800 mt-12 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="text-xl font-bold text-white mb-4 md:mb-0">
-              PrepMaster
-            </div>
-            <div className="text-sm">
-              © {currentYear} PrepMaster. All rights reserved.
-            </div>
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div>
+            <h3 className="text-lg font-semibold mb-4">About Us</h3>
+            <p className="text-gray-400">
+              PrepMaster helps students prepare for their exams with comprehensive study materials and tools.
+            </p>
           </div>
+          <div>
+            <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
+            <ul className="space-y-2">
+              <li><a href="/features" className="text-gray-400 hover:text-white">Features</a></li>
+              <li><a href="/pricing" className="text-gray-400 hover:text-white">Pricing</a></li>
+              <li><a href="/guides" className="text-gray-400 hover:text-white">Guides</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-lg font-semibold mb-4">Support</h3>
+            <ul className="space-y-2">
+              <li><a href="/faq" className="text-gray-400 hover:text-white">FAQ</a></li>
+              <li><a href="/contact" className="text-gray-400 hover:text-white">Contact Us</a></li>
+              <li><a href="/help" className="text-gray-400 hover:text-white">Help Center</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-lg font-semibold mb-4">Connect</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-gray-400 hover:text-white">Twitter</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white">LinkedIn</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white">Facebook</a></li>
+            </ul>
+          </div>
+        </div>
+        <div className="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+          <p>&copy; {currentYear} PrepMaster. All rights reserved.</p>
         </div>
       </div>
     </footer>

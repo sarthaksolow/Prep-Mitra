@@ -100,3 +100,6 @@ body {
 .contribution-graph::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
+.grid-cols-52 {
+  grid-template-columns: repeat(52, minmax(0, 1fr));
+}

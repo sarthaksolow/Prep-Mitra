@@ -22,13 +22,13 @@ export default function ProfilePage() {
   const [isEditing, setIsEditing] = useState(false)
 
   const userProfile: UserProfile = {
-    name: "John Doe",
-    username: "johndoe123",
-    email: "john.doe@example.com",
-    mobile: "+1 234 567 8900",
-    country: "United States",
-    rating: 1850,
-    mcqsSolved: 145,
+    name: "Hello World",
+    username: "1234567",
+    email: "hello@gmail.com",
+    mobile: "1234 567 890",
+    country: "India",
+    rating: 0,
+    mcqsSolved: 0,
     profilePic: "/default-avatar.png" // Add a default avatar image to your public folder
   }
 
