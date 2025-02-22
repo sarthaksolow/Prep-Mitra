@@ -57,7 +57,7 @@ export default function Sidebar({ activeItem, setActiveItem }: {
       id: 'about',
       name: 'About Us',
       color: 'text-pink-600',
-      path: '/dashboard/about'
+      path: '/about'
     }
   ]
 

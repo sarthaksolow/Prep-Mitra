@@ -56,7 +56,7 @@ export default function Footer() {
           <div>
             <h3 className="text-lg font-semibold mb-4">About Us</h3>
             <p className="text-gray-400">
-              PrepMaster helps students prepare for their exams with comprehensive study materials and tools.
+              PrepMitra helps students prepare for their exams with comprehensive study materials and tools.
             </p>
           </div>
           <div>
