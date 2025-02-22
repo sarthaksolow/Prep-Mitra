@@ -42,6 +42,9 @@ export default function SubjectivePage() {
       message: 'There might be a grammatical error in the second paragraph.'
     }
   ])
+  const [aiResponse, setAiResponse] = useState('') // State for AI-generated response
+  const [aiDescriptiveResponse, setAiDescriptiveResponse] = useState('') // State for AI-generated descriptive response
+  const [writingStyle, setWritingStyle] = useState('academic') // State for selected writing style
 
   const inputOptions: InputOption[] = [
     { type: 'context', icon: <PenTool className="w-4 h-4" />, label: 'Context' },
@@ -75,11 +78,25 @@ export default function SubjectivePage() {
     }
   }
 
+  // Simulate AI response generation (replace with actual API call)
+  const generateAIResponse = () => {
+    // Simulate an AI response based on the input text
+    const response = `AI Response: Here is a refined version of your text:\n\n${inputText
+      .split(' ')
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ')}.`;
+    setAiResponse(response);
+
+    // Simulate a descriptive response from your AI
+    const descriptiveResponse = `Descriptive Analysis:\n\nYour text demonstrates a strong command of language, but it could benefit from more varied sentence structures and a deeper exploration of the topic. Consider adding more examples or elaborating on key points to enhance clarity and engagement.`;
+    setAiDescriptiveResponse(descriptiveResponse);
+  };
+
   const handleAIReview = () => {
-    setShowFeedback(true)
-    // Add your AI review logic here
-    console.log('Requesting AI review for:', inputText)
-  }
+    setShowFeedback(true);
+    generateAIResponse(); // Generate AI response when AI Review is clicked
+    console.log('Requesting AI review for:', inputText);
+  };
 
   const handleEditResponse = () => {
     // Add your edit response logic here
@@ -192,6 +209,21 @@ export default function SubjectivePage() {
                       <span>{option.label}</span>
                     </button>
                   ))}
+
+                  {/* Writing Style Dropdown */}
+                  <div className="ml-auto">
+                    <select
+                      value={writingStyle}
+                      onChange={(e) => setWritingStyle(e.target.value)}
+                      className="px-4 py-2.5 rounded-xl text-sm font-medium bg-white border border-gray-200 focus:ring-2 focus:ring-pink-500 focus:border-transparent"
+                    >
+                      <option value="academic">Academic</option>
+                      <option value="professional">Professional</option>
+                      <option value="informal">Informal</option>
+                      <option value="descriptive">Descriptive</option>
+                      <option value="scientific">Scientific</option>
+                    </select>
+                  </div>
                 </div>
 
                 {/* Dynamic Input Section with Enhanced Styling */}
@@ -224,6 +256,38 @@ export default function SubjectivePage() {
                     <div className="text-sm text-gray-500 ml-2 pl-2 border-l">
                       {wordCount} words
                     </div>
+                  </div>
+                </div>
+
+                {/* AI Response Box */}
+                <div className="mt-8 relative group">
+                  <div className="absolute inset-0 bg-gradient-to-r from-pink-500/10 via-purple-500/10 to-blue-500/10 rounded-xl blur transition-all duration-300 group-hover:opacity-100 opacity-0"></div>
+                  <textarea
+                    className="relative w-full h-72 p-6 bg-white/80 backdrop-blur-sm border border-gray-200 rounded-xl focus:ring-2 focus:ring-pink-500 focus:border-transparent resize-none text-gray-700 text-lg leading-relaxed transition-all duration-200 group-hover:shadow-lg"
+                    placeholder={aiResponse ? "" : "No AI response yet. Click 'AI Review' to generate feedback."}
+                    value={aiResponse}
+                    readOnly // Make the textarea read-only
+                  />
+                  <div className="absolute bottom-4 right-4 flex items-center space-x-3 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-lg border shadow-lg">
+                    <span className="text-sm text-gray-500">
+                      AI Response
+                    </span>
+                  </div>
+                </div>
+
+                {/* AI Descriptive Response Box */}
+                <div className="mt-8 relative group">
+                  <div className="absolute inset-0 bg-gradient-to-r from-pink-500/10 via-purple-500/10 to-blue-500/10 rounded-xl blur transition-all duration-300 group-hover:opacity-100 opacity-0"></div>
+                  <textarea
+                    className="relative w-full h-72 p-6 bg-white/80 backdrop-blur-sm border border-gray-200 rounded-xl focus:ring-2 focus:ring-pink-500 focus:border-transparent resize-none text-gray-700 text-lg leading-relaxed transition-all duration-200 group-hover:shadow-lg"
+                    placeholder={aiDescriptiveResponse ? "" : "No descriptive analysis yet. Click 'AI Review' to generate feedback."}
+                    value={aiDescriptiveResponse}
+                    readOnly // Make the textarea read-only
+                  />
+                  <div className="absolute bottom-4 right-4 flex items-center space-x-3 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-lg border shadow-lg">
+                    <span className="text-sm text-gray-500">
+                      Descriptive Analysis
+                    </span>
                   </div>
                 </div>
 
@@ -338,5 +402,5 @@ export default function SubjectivePage() {
         <Footer />
       </div>
     </div>
-  )
-} 
+  );
+}
