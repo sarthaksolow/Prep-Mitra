@@ -1,43 +1,66 @@
-import {Schema, model, Document, models} from 'mongoose';
+import mongoose, { Document, Schema } from 'mongoose';
 
-interface IUser extends Document {
-  name?: string;
-  username: string,
+// Define the IUser interface
+export interface IUser extends Document {
+  name: string;
+  username: string;
   email: string;
   password: string;
   profileImg?: string;
-  dob?: Date;
-  // oauthProvider: string;
+  mobile: number;
+  country: string;
+  rating: number;
+  rank: number;
 }
 
-const userSchema:Schema<IUser> = new Schema({
-  name: {
-    type: String,
-    min: [3, 'Name must be at least 3 characters long'],
+// Create the User schema
+const UserSchema: Schema = new Schema(
+  {
+    name: {
+      type: String,
+      required: true,
+    },
+    username: {
+      type: String,
+      required: true,
+      unique: true,
+    },
+    email: {
+      type: String,
+      required: true,
+      unique: true,
+      lowercase: true,
+      match: [/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/, 'Please fill a valid email address'], // simple email validation
+    },
+    password: {
+      type: String,
+      required: true,
+    },
+    profileImg: {
+      type: String,
+      default: '',
+    },
+    mobile: {
+      type: Number,
+      required: true,
+      unique: true,
+    },
+    country: {
+      type: String,
+      required: true,
+    },
+    rating: {
+      type: Number,
+      default: 0,
+    },
+    rank: {
+      type: Number,
+      default: 0,
+    },
   },
-  username: {
-    type: String,
-  },
-  email: {
-    type: String,
-    required: true,
-    unique: [true, 'Email already linked with another account'],
-  },
-  password: {
-    type: String,
-  },
-  profileImg: {
-    type: String,
-  },
-  dob: {
-    type: Date,
-  },
-  // oauthProvider: {
-  //   type: String,
-  //   default: 'credentials',
-  // },
-}, {timestamps: true});
+  { timestamps: true } 
+);
 
-const User = models.User || model('User', userSchema);
+const User = mongoose.model<IUser>('User', UserSchema);
 
-export default User
+export default User;
