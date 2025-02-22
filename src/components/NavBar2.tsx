@@ -8,16 +8,19 @@ export default function NavBar2() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
 
+  // Updated navItems with correct paths
   const navItems = [
-    { name: 'Features', href: '#' },
-    { name: 'Pricing', href: '#' },
+    { name: 'Features', href: '/features' },
+    { name: 'Pricing', href: '/pricing' },
   ]
 
-  const dropdownItems = Array.from({ length: 10 }, (_, i) => ({
-    id: i + 1,
-    name: `Option ${i + 1}`,
-    href: '#'
-  }))
+  const examOptions = [
+    { id: 1, name: 'SSC CGL', href: '/exams/ssc-cgl', externalLink: 'https://ssc.gov.in/' },
+    { id: 2, name: 'CLAT', href: '/exams/clat', externalLink: 'https://consortiumofnlus.ac.in/' },
+    { id: 3, name: 'UPSC', href: '/exams/upsc', externalLink: 'https://upsc.gov.in/' },
+    { id: 4, name: 'CAT', href: '/exams/cat', externalLink: 'https://cgat.gov.in/' },
+    { id: 5, name: 'JEE Mains/Adv', href: '/exams/jee', externalLink: 'https://jeemain.nta.nic.in/' }
+  ]
 
   return (
     <nav className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 w-11/12 max-w-7xl">
@@ -26,7 +29,7 @@ export default function NavBar2() {
           {/* Logo */}
           <div className="flex-shrink-0">
             <Link href="/dashboard" className="text-xl font-bold text-blue-600">
-              PrepMaster
+              PrepMitra
             </Link>
           </div>
 
@@ -38,7 +41,7 @@ export default function NavBar2() {
                 onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                 className="flex items-center space-x-1 text-gray-700 hover:text-blue-600"
               >
-                <span>Categories</span>
+                <span>Exams</span>
                 <svg
                   className={`w-4 h-4 transition-transform ${isDropdownOpen ? 'rotate-180' : ''}`}
                   fill="none"
@@ -52,14 +55,23 @@ export default function NavBar2() {
               {/* Dropdown Menu */}
               {isDropdownOpen && (
                 <div className="absolute top-full left-0 mt-2 w-56 bg-white rounded-lg shadow-lg py-2">
-                  {dropdownItems.map((item) => (
-                    <Link
-                      key={item.id}
-                      href={item.href}
-                      className="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600"
-                    >
-                      {item.name}
-                    </Link>
+                  {examOptions.map((exam) => (
+                    <div key={exam.id} className="flex flex-col">
+                      <Link
+                        href={exam.href}
+                        className="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600"
+                      >
+                        {exam.name}
+                      </Link>
+                      <a 
+                        href={exam.externalLink} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="block px-4 py-1 text-xs text-gray-500 hover:text-blue-600 ml-4"
+                      >
+                        Official Website →
+                      </a>
+                    </div>
                   ))}
                 </div>
               )}
@@ -102,4 +114,4 @@ export default function NavBar2() {
       </div>
     </nav>
   )
-} 
+}

@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import Navbar from '@/components/NavBar'
 import Footer from '@/components/Footer'
+import Testimonials from '@/components/Testimonials'
 
 export default function LandingPage() {
   const [hoveredFeature, setHoveredFeature] = useState<string | null>(null)
@@ -171,7 +172,7 @@ export default function LandingPage() {
           </motion.div>
         </div>
       </section>
-
+      <Testimonials/>
       <Footer />
     </div>
   )
