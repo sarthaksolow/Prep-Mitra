@@ -1,17 +1,18 @@
+import React from 'react'
+
 interface Box1Props {
   title: string;
   progress: number;
   total: number;
-  icon: string;
+  icon: React.ReactNode;
   bgColor: string;
   iconColor: string;
 }
 
-export default function Box1({ title, progress, total, icon, bgColor, iconColor }: Box1Props) {
+export default function Box1({ title, progress, total, bgColor, iconColor }: Box1Props) {
   return (
     <div className={`${bgColor} rounded-lg p-4 flex items-center space-x-4 hover:scale-[1.02] transition-transform cursor-pointer`}>
       <div className={`${iconColor} w-12 h-12 rounded-lg flex items-center justify-center`}>
-        <img src={icon} alt={title} className="w-8 h-8" />
       </div>
       <div className="flex-1">
         <h3 className="text-sm font-medium text-white mb-1">{title}</h3>
