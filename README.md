@@ -1,6 +1,6 @@
 # PrepMitra
 
-### Step 1: Setting Up the Backend (Python)
+### Step 1:: Setting Up the Backend (Python)
 
 The backend server is responsible for processing requests and running the machine learning model.
 
